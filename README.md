@@ -39,4 +39,4 @@ O projeto foi implementado **sem classes ou mutação direta de estado**, seguin
 
 1. Baixe ou clone o repositório:
    ```bash
-   git clone https://github.com/SeuUsuario/projeto-streaming.git
+   git clone https://github.com/AndersonAdrianoMarchi/projeto_streaming.git
