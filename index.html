@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulador de Assinaturas Streaming</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect rx='8' width='36' height='36' fill='%2306b6d4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%23001'>SF</text></svg>" alt="logo"/>
+      <div>
+        <h1>Simulador de Assinaturas — Pró-rata & Métricas</h1>
+        <div class="muted">Tema: Streaming / Assinaturas</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <div class="card">
+          <h3>1) Adicionar Assinatura</h3>
+          <div class="form-grid">
+            <div>
+              <label>Nome do assinante</label>
+              <input id="inpName" type="text" placeholder="Ex: João" />
+            </div>
+            <div>
+              <label>Preço mensal inicial (R$)</label>
+              <input id="inpPrice" type="number" min="0" step="0.01" placeholder="Ex: 29.90" />
+            </div>
+            <div>
+              <label>Data início</label>
+              <input id="inpStart" type="date" />
+            </div>
+            <div>
+              <label>Data fim (opcional)</label>
+              <input id="inpEnd" type="date" />
+            </div>
+          </div>
+          <div class="btns">
+            <button id="btnAddSub">Adicionar assinatura</button>
+            <button id="btnClear">Limpar formulários</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>2) Mudança de Plano</h3>
+          <div class="form-grid">
+            <div>
+              <label>Assinatura</label>
+              <select id="selSubForChange"></select>
+            </div>
+            <div>
+              <label>Data da mudança</label>
+              <input id="inpChangeDate" type="date" />
+            </div>
+            <div>
+              <label>Novo preço mensal (R$)</label>
+              <input id="inpNewPrice" type="number" min="0" step="0.01" />
+            </div>
+            <div>
+              <label>Motivo</label>
+              <input id="inpChangeNote" type="text" />
+            </div>
+          </div>
+          <div class="btns">
+            <button id="btnAddChange">Adicionar mudança</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>3) Promoção (Desconto)</h3>
+          <div class="form-grid">
+            <div>
+              <label>Assinatura</label>
+              <select id="selSubForPromo"></select>
+            </div>
+            <div>
+              <label>Percentual (%)</label>
+              <input id="inpPromoPct" type="number" min="0" max="100" step="1" />
+            </div>
+            <div>
+              <label>Início promoção</label>
+              <input id="inpPromoStart" type="date" />
+            </div>
+            <div>
+              <label>Fim promoção</label>
+              <input id="inpPromoEnd" type="date" />
+            </div>
+          </div>
+          <div class="btns">
+            <button id="btnAddPromo">Adicionar promoção</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>4) Faturamento do Período</h3>
+          <div class="form-grid">
+            <div>
+              <label>Início</label>
+              <input id="inpPeriodStart" type="date" />
+            </div>
+            <div>
+              <label>Fim</label>
+              <input id="inpPeriodEnd" type="date" />
+            </div>
+            <div style="grid-column:1/3">
+              <label>Mostrar detalhes?</label>
+              <select id="selShowDetails">
+                <option value="yes">Sim</option>
+                <option value="no">Não</option>
+              </select>
+            </div>
+          </div>
+          <div class="btns">
+            <button id="btnCompute">Calcular</button>
+            <button id="btnResetAll">Resetar tudo</button>
+          </div>
+        </div>
+
+        <div class="card" id="resultsCard" style="display:none">
+          <h3>Resultados</h3>
+          <div id="summaryArea"></div>
+          <div id="detailsArea"></div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Assinaturas</h3>
+          <div id="subscriptionsList"></div>
+        </div>
+
+        <div class="card">
+          <h3>Métricas</h3>
+          <div class="muted">
+            ARPU = Receita total / Usuários ativos<br>
+            Churn = Cancelamentos / Usuários início<br>
+            Pró-rata = valor proporcional aos dias ativos
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="muted">Desenvolvido por: @SeuNome</div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
